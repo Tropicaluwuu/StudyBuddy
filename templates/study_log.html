@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card p-4">
+
+    <h1 class="mb-3">Study Log</h1>
+
+    <form method="POST" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label" for="course">Course</label>
+            <input class="form-control" id="course" name="course" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="minutes">Minutes studied</label>
+            <input type="number" min="1" class="form-control" id="minutes" name="minutes" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="notes">Notes</label>
+            <textarea class="form-control" id="notes" name="notes" rows="3"
+                      placeholder="What did you work on?"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Log</button>
+    </form>
+
+    <h2 class="mb-3">Previous Sessions</h2>
+
+    {% if study_logs %}
+        <ul class="list-group">
+            {% for log in study_logs %}
+            <li class="list-group-item">
+                <strong>{{ log.course }}</strong> – {{ log.minutes }} minutes<br>
+                <small>{{ log.notes }}</small>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No study sessions logged yet.</p>
+    {% endif %}
+    
+</div>
+{% endblock %}

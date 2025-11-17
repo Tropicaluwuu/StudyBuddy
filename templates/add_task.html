@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card p-4">
+
+    <h1 class="mb-3">Add Study Task</h1>
+
+    <form method="POST" class="mb-4">
+        <div class="mb-3">
+            <label class="form-label" for="course">Course</label>
+            <input class="form-control" id="course" name="course" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="title">Task title</label>
+            <input class="form-control" id="title" name="title" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="due_date">Due date</label>
+            <input type="date" class="form-control" id="due_date" name="due_date">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="priority">Priority</label>
+            <select class="form-select" id="priority" name="priority">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
+
+    <h2 class="mb-3">Current Tasks</h2>
+    {% if tasks %}
+        <ul class="list-group">
+            {% for t in tasks %}
+            <li class="list-group-item">
+                <strong>{{ t.title }}</strong> ({{ t.course }}) –  
+                Due: {{ t.due_date or "N/A" }},
+                Priority: {{ t.priority }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks yet.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

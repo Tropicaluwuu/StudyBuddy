@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Top intro card -->
+<div class="card p-4 mb-4">
+    <h1 class="mb-2">Welcome to Study Buddy</h1>
+    <p class="mb-0">Set your main study goal for today.</p>
+</div>
+
+<!-- Form card -->
+<div class="card p-4">
+    <form method="POST" class="mb-4">
+        <div class="mb-3">
+            <label for="daily_goal" class="form-label">Today's Goal</label>
+            <input
+                type="text"
+                class="form-control"
+                id="daily_goal"
+                name="daily_goal"
+                placeholder="Finish math homework"
+                required
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Goal</button>
+    </form>
+
+    {% if goal %}
+    <div class="alert alert-success mb-0">
+        Your current goal: <strong>{{ goal }}</strong>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
