@@ -12,5 +12,6 @@ Built using:
 - Bootstrap 5
 - Custom CSS + GIF background theme
 - Help from ChatGPT 5.1
+- Help from Dunwoody peers
 
 ## No Databases yet
